@@ -23,7 +23,8 @@ Pillow==2.8.1
 django-allauth==0.19.1
 
 # For the persistence stores
-MySQL-python==1.2.5
+psycopg2==2.6
+# MySQL-python==1.2.5
 
 # Unicode slugification
 unicode-slugify==0.1.3
