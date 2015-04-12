@@ -27,6 +27,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable avatars
     url(r'^avatar/', include('avatar.urls')),
+    url(r'^blog/', include('blog.urls', namespace="blog")),
+    url(r'^registers/', include('registers.urls', namespace="registers")),
 
     # Your stuff: custom urls go here
 

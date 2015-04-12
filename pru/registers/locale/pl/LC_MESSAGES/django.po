@@ -1,0 +1,156 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-27 09:02+0100\n"
+"PO-Revision-Date: 2015-02-27 09:02+0100\n"
+"Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
+"Language-Team: Adam Dobrawy <LL@li.org>\n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: models.py:12
+msgid "Featured image"
+msgstr "Powiązana grafika"
+
+#: models.py:13
+msgid "Institution name"
+msgstr "Nazwa instytucji"
+
+#: models.py:14
+msgid "Contractor data"
+msgstr "Nazwa każdego z kontrahentów"
+
+#: models.py:15
+msgid "Name of each contractor"
+msgstr ""
+"Opublikowane jest oznaczenie nazwy każdego z przedsiębiorców np. nazwa "
+"firmy, imię i nazwisko osoby fizycznej "
+
+#: models.py:16
+msgid "ID data of contractor"
+msgstr "Numer identyfikacyjny kontrahentów"
+
+#: models.py:17
+msgid "Machine readable of contractor eg. KRS, NIP, REGON"
+msgstr "Powszechny identyfikator przedsiębiorców np. KRS, NIP, REGON"
+
+#: models.py:18
+msgid "Value of contract"
+msgstr "Wartość umów"
+
+#: models.py:19
+msgid "Value of each contract are published"
+msgstr "Wartość każdej umowy jest dostępna on-line"
+
+#: models.py:20
+msgid "Individual person name"
+msgstr "Dane osobowe osób fizycznych"
+
+#: models.py:21
+msgid "Name of contractor, even individual person"
+msgstr "Dane kontrahentów, także osób fizycznych są publikowane"
+
+#: models.py:22
+msgid "Text format"
+msgstr "Format tekstowy"
+
+#: models.py:23
+msgid "Datasheet are published as text"
+msgstr "Dane są publikowane w formie tekstowe np. tekstowej tabeli"
+
+#: models.py:24
+msgid "Comparable"
+msgstr "Porównywalne"
+
+#: models.py:25
+msgid "Data are published in comparable form eg. spreadsheet, not PDF"
+msgstr ""
+"Dane są publikowane w formacie umożliwiającym porównywanie np. arkusz "
+"kalkulacyjny, ale nie PDF"
+
+#: models.py:26
+msgid "Scan"
+msgstr "Skany umów"
+
+#: models.py:27
+msgid "Scan of most contract without enquire"
+msgstr ""
+"Zapewniony jest z widoku rejestru dostęp bez wniosków do skanów większości "
+"umów "
+
+#: models.py:28
+msgid "Information about spending"
+msgstr "Dane o wydatkach"
+
+#: models.py:29
+msgid ""
+"Published data contains information about spneding without contracts too"
+msgstr ""
+"Publikowane są informacje o wydatkach, także niezwiązanych z umowami "
+"(faktury, koszty sądowe itd.)"
+
+#: models.py:30
+msgid "Comment"
+msgstr "Komentarz"
+
+#: models.py:31
+msgid "Extra information about registers eg. story of publishing, heroes"
+msgstr "Dodatkowe informacje np. o historii publikacji, bohaterach"
+
+#: models.py:32
+msgid "Reporter"
+msgstr "Osoba zgłaszająca"
+
+#: models.py:33
+msgid "User who report contracts to us"
+msgstr "Użytkownik, który zgłosił nam rejestr"
+
+#: models.py:35
+msgid "Community"
+msgstr "Gmina"
+
+#: models.py:36
+msgid "Longtitude"
+msgstr "Wysokość geograficzna"
+
+#: models.py:37
+msgid "Langtitude"
+msgstr "Szerokość geograficzna"
+
+#: models.py:38
+msgid "URL of publication"
+msgstr "Adres publikacji"
+
+#: models.py:39
+msgid "Public"
+msgstr "Opublikowane"
+
+#: models.py:40
+msgid "Mark to publish on site"
+msgstr "Zaznacz, aby opublikować na stronie"
+
+#: models.py:41
+msgid "Creation date"
+msgstr "Data utworzenia"
+
+#: models.py:43
+msgid "Last modification date"
+msgstr "Data ostatniej modyfikacji"
+
+#: models.py:44
+msgid "Date of last modification of this object"
+msgstr "Data ostatniej modyfikacji obiektu"
+
+#~ msgid "Date of creation of this object"
+#~ msgstr "Data utworzenia obiektu"

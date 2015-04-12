@@ -1,0 +1,78 @@
+{% extends 'registers/base.html' %}
+{#{% load pagination_tags %}#}
+{% block breadcrumb %}
+<ol class="breadcrumb">
+    {% if teryt %}
+    <li><a href="{% url 'registers:list'%}">Index</a></li>
+    {% else %}
+    <li class="active">Index</li>
+    {% endif %}
+    {%for v in breadcrumbs %}
+        <li><a href="{% url 'registers:list' teryt_pk=v.pk%}">{{v}}</a></li>
+    {%endfor%}
+
+    {% if teryt %}
+    <li class="active">{{teryt}}</li>
+    {% endif %}
+
+    {%if children %}
+        <li>
+        <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            Action <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+        {%for v in children %}
+            <li><a href="{% url 'registers:list' teryt_pk=v.pk%}">{{v}}</a></li>
+        {%endfor%}
+        </ul>
+        </div>
+        </li>
+    {%endif%}
+</ol>
+{% endblock %}
+{% block main %}
+<a href="{% url 'registers:create' %}" class="btn btn-info">Report</a>
+<a href="{% url 'registers:map' %}" class="btn btn-info">Map</a>
+
+{% load query_string %}
+{%if object_list %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Created{% include 'registers/_order_link.html' with order_key='created'%} </th>
+            <th>Title {% include 'registers/_order_link.html' with order_key='title'%} </th>
+            <th>Województwo{% include 'registers/_order_link.html' with order_key='community__parent__parent'%} </th>
+        </tr>
+        </thead>
+        
+        <tbody>
+            {%for obj in object_list%}
+            <tr>
+                <td>{{ obj.created }}</td>
+                <td><a href="{{obj.get_absolute_url}}">{{ obj.title }}</a></td>
+                <td>{{obj.community.parent.parent}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    
+    </table>
+    
+    <nav>
+        <ul class="pager">
+        {% if page_obj.has_previous %}
+            <li><a href="?{% query_update request page=page_obj.previous_page_number %}">previous</a></li>
+        {% endif %}
+        <li>{{page_obj.number}} of {{paginator.num_pages}}</li>
+        {% if page_obj.has_next %}
+            <li><a href="?{% query_update request page=page_obj.next_page_number %}">next</a></li>
+        {% endif %}
+        </ul>
+    </nav>
+{% else %}
+No rows
+{%endif%}
+
+
+[<a href="{%url 'registers:list_api' %}">API</a>]
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'registers/base.html' %}
+{% load staticfiles crispy_forms_tags %}
+{% block css %}
+    {{block.super}}
+    <style>
+    #map-canvas {
+        width: 100%;
+        height: 500px;
+    }
+    </style>
+    
+{% endblock %}
+{% block javascript %}
+    {{block.super}}
+    <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
+    <script src="{% static 'registers/locationpicker.jquery.js' %}"></script>
+    <script type="text/javascript">
+    /*$(function() {
+        $('#map-canvas').locationpicker({
+            radius: 0,
+            enableAutocomplete: true,
+            inputBinding: {
+                latitudeInput: $('#id_lat'),
+                longitudeInput: $('#id_lng'),
+                locationNameInput: $('#id_title')
+            },
+        });
+    });*/
+    </script>
+{% endblock %}
+{% block main %}
+{% crispy form %}
+{% endblock%}

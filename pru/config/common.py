@@ -47,6 +47,9 @@ class Common(Configuration):
     # Apps specific for this project go here.
     LOCAL_APPS = (
         'users',  # custom users app
+        'registers',
+        'blog',
+        'teryt',
         # Your stuff: custom apps go here
     )
 

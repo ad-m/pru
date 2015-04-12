@@ -1,0 +1,79 @@
+{% extends 'registers/base.html' %}
+{% load registers_tags staticfiles %}
+{% block breadcrumb %}
+<ol class="breadcrumb">
+    <li><a href="{% url 'registers:list' %}">Index</a></li>
+    {%for v in object.community.get_ancestors %}
+        <li><a href="{%url 'registers:list' teryt_pk=v.pk%}">{{v}}</a></li>
+    {%endfor%}
+    <li><a href="{%url 'registers:list' teryt_pk=object.community.pk%}">{{object.community}}</a></li>
+    <li class="active">{{object}}</li>
+
+</ol>
+{%endblock%}
+{%block main%}
+<a href="{% url 'registers:create' %}" class="btn btn-info">Report</a>
+<a href="{% url 'registers:map' %}" class="btn btn-info">Map</a>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{object}}</h3>
+  </div>
+  {% if not object.public %}
+    <div class="alert alert-info" role="alert">Object "{{object}}" is not public available</div>
+  {% endif %}
+  <div class="panel-body">
+  {% if object.img %}<img src="{{object.img.url}}" title="{{object}}"> {% endif %}
+  {{object.comment | safe}}
+  </div>
+  <table class="table">
+  <tr><td>slug</td><td>{{object.slug}}</td></tr>
+  <tr><td>img</td><td>{{object.img}}</td></tr>
+  <tr><td>title</td><td>{{object.title}}</td></tr>
+  <tr><td>id_data</td><td>{{object.id_data|display_register_status}}</td></tr>
+  <tr><td>contractor</td><td>{{object.contractor|display_register_status}}</td></tr>
+  <tr><td>privacy</td><td>{{object.privacy|display_register_status}}</td></tr>
+  <tr><td>text</td><td>{{object.text|display_register_status}}</td></tr>
+  <tr><td>comparable</td><td>{{object.comparable|display_register_status}}</td></tr>
+  <tr><td>scan</td><td>{{object.scan|display_register_status}}</td></tr>
+  <tr><td>spending</td><td>{{object.spending|display_register_status}}</td></tr>
+  <tr><td>comment</td><td>{{object.comment}}</td></tr>
+  <tr><td>user</td><td>{{object.user}}</td></tr>
+  <tr><td>community</td><td>
+    <a href="{{object.community.get_absolute_url}}">{{object.community}}</a>
+  </td></tr>
+  <tr><td>county</td><td>
+    <a href="{{object.parent.get_absolute_url}}">{{object.community.parent}}</a>
+  </td></tr>
+  <tr><td>voivodeship</td><td>
+    <a href="{{object.community.parent.parent.get_absolute_url}}">{{object.community.parent.parent}}</a>
+  </td></tr>
+  <tr><td>lat</td><td>{{object.lat}}</td></tr>
+  <tr><td>lng</td><td>{{object.lng}}</td></tr>
+  <tr><td>url</td><td>{{object.url}}</td></tr>
+  <tr><td>public</td><td>{{object.public}}</td></tr>
+  <tr><td>created</td><td>{{object.created}}</td></tr>
+  <tr><td>modified</td><td>{{object.modified}}</td></tr>
+  </table>
+</div>
+<div id="map-canvas"></div>
+  <nav>
+      <ul class="pager">
+      {% if object.get_previous_by_created.public %}
+          <li><a href="{{object.get_previous_by_created.get_absolute_url}}">{{object.get_previous_by_created}}</a></li>
+      {% endif %}
+      {% if object.get_next_by_created.public %}
+          <li><a href="{{object.get_next_by_created.get_absolute_url}}">{{object.get_next_by_created}}</a></li>
+      {% endif %}      </ul>
+  </nav>
+[<a href="{{object.get_absolute_api}}">API</a>]
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="{% static 'registers/map.js' %}"></script>
+    <script type="text/javascript">
+        init_map(document.getElementById("map-canvas"), "{{object.get_absolute_api}}")
+    </script>
+    {{block.super}}
+{% endblock %}

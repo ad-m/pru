@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+{% block content%}
+<h1>{{object}}</h1>
+{% if object.img %}<img src="{{object.img.url}}" style="float: left">{% endif %}
+{{obj.comment}}
+Registers: {% for obj in object.registers.public.all %}<a href="{{obj.get_absolute_url}}">{{obj}}</a>{%endfor%}
+Tags: {% for obj in object.tags.all %}<a href="{{obj.get_absolute_url}}">{{obj}}</a>{%endfor%}
+Created: {{object.created}}
+Modified: {{object.modified}}
+{% endblock%}

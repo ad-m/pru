@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% if object %}
+<h1>{{object}}</h1>
+{% endif %}
+
+{% if object_list %}
+    {% for obj in object_list%}
+    <h2><a href="{{obj.get_absolute_url}}">{{obj}}</a></h2>
+    {% if obj.img%}<img src="{{obj.img.url}}" style="float: left">{% endif %}
+    {{obj.comment}}
+    {% endfor %}
+{% else %}
+
+{% endif %}
+{% endblock %}

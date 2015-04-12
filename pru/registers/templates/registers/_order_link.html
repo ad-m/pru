@@ -1,0 +1,11 @@
+{% if order_by != order_key or ordering != 'asc' %}
+    [<a href="?order_by={{order_key}}">ASC</a>]
+{% else %}
+    [ASC]
+{% endif %}
+
+{% if order_by != order_key or ordering != 'desc' %}
+    [<a href="?order_by={{order_key}}&ordering=desc">DESC</a>]
+{% else %}
+    [DESC]
+{% endif %}
